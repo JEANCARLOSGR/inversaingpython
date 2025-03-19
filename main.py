@@ -1,5 +1,5 @@
-heladoos = []  # Lista para almacenar los helados
-contadore_id = 1  # Contador para asignar IDs únicos
+helados = []  # Lista para almacenar los helados
+contador_id = 1  # Contador para asignar IDs únicos
 
 while True:
     print("\nGestión de Helados")
@@ -14,24 +14,24 @@ while True:
     if opcion == "1":  # Agregar un helado
         nombre = input("Ingrese el nombre del helado: ")
         descripcion = input("Ingrese la descripción del helado: ")
-        precioo = input("Ingrese el precio del helado: ")
+        precio_input = input("Ingrese el precio del helado: ")
         
-    if precioo.isdigit():
-            precio = float(precio)  # Error: variable mal escrita
-            heladoo = {"id": contadore_id, "nombre": nombre, "descripcion": descripcion, "precio": precio}
-            heladoos.append(haledo)  # Error: variable mal escrita
-            contadore_id += 1
+        if precio_input.replace('.', '', 1).isdigit():  # Permitir números decimales
+            precio = float(precio_input)
+            helado = {"id": contador_id, "nombre": nombre, "descripcion": descripcion, "precio": precio}
+            helados.append(helado)
+            contador_id += 1
             print("Helado agregado correctamente.")
-                    else:
+        else:
             print("Error: El precio debe ser un número.")
     
     elif opcion == "2":  # Ver lista de helados
-        if len(helados) == 0:  # Error: variable incorrecta
+        if len(helados) == 0:
             print("No hay helados registrados.")
         else:
             print("\nLista de Helados:")
-            for helado in heladoos:
-                print("ID: {helado['iD']}, Nombre: {helado['nombre']}, Descripción: {helado['descripsion']}, Precio: ${helado['precio']}")  # Error en claves del diccionario
+            for helado in helados:
+                print(f"ID: {helado['id']}, Nombre: {helado['nombre']}, Descripción: {helado['descripcion']}, Precio: ${helado['precio']:.2f}")
     
     elif opcion == "3":  # Modificar un helado
         id_modificar = input("Ingrese el ID del helado a modificar: ")
@@ -40,9 +40,9 @@ while True:
             id_modificar = int(id_modificar)
             encontrado = False
             
-            for helado in heladoos:
-            if helado["id"] == id_modificar:
-                    nuevo_nombre == input("Nuevo nombre (deje en blanco para no cambiar): ")  # Error: doble signo igual
+            for helado in helados:
+                if helado["id"] == id_modificar:
+                    nuevo_nombre = input("Nuevo nombre (deje en blanco para no cambiar): ")
                     nueva_descripcion = input("Nueva descripción (deje en blanco para no cambiar): ")
                     nuevo_precio = input("Nuevo precio (deje en blanco para no cambiar): ")
                     
@@ -50,7 +50,7 @@ while True:
                         helado["nombre"] = nuevo_nombre
                     if nueva_descripcion:
                         helado["descripcion"] = nueva_descripcion
-                    if nuevo_precio.isdigit():
+                    if nuevo_precio.replace('.', '', 1).isdigit():
                         helado["precio"] = float(nuevo_precio)
                     
                     print("Helado modificado correctamente.")
@@ -69,9 +69,9 @@ while True:
             id_eliminar = int(id_eliminar)
             encontrado = False
             
-            for helado in heladoos:
+            for helado in helados:
                 if helado["id"] == id_eliminar:
-                    heladoos.remove(heladoo)  # Error: variable incorrecta
+                    helados.remove(helado)
                     print("Helado eliminado correctamente.")
                     encontrado = True
                     break
@@ -84,5 +84,22 @@ while True:
     elif opcion == "5":  # Salir
         print("Saliendo del programa...")
         break
-                else:
+    else:
         print("Opción inválida, intente nuevamente.")
+
+
+
+        #Corrección de nombres de variables:
+
+        #heladoos - helados
+        #contadore_id - contador_id
+        #haledo - helado
+        #heladoo - helado
+        #precioo - precio_input
+
+        #Corrección de validación del precio:
+        # precioo.isdigit() por precio_input.replace('.', '', 1).isdigit() para permitir decimales.
+         
+
+        #Corrección de formato en la impresión de la lista:
+        #helado['iD'] y helado['descripsion'] corregidos a helado['id'] y helado['descripcion']
